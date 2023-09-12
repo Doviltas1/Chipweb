@@ -1,0 +1,142 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block cta%}
+<div class="container hero">
+  <div class="row">
+      <div class="col-12 col-lg-6 col-xl-5 offset-xl-1">
+          <h1>Profesionalus automobilių galios didinimas</h1>
+          <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, doloribus laborum quos necessitatibus molestias nihil? Praesentium dolorem ducimus accusantium deleniti ex, quis atque esse. Voluptatum? </p>
+              <a href="{% url 'appointment' %}" class="btn btn-light btn-lg action-button" type="button">Rezervuoti apsilankymą</a>
+      </div>
+
+  </div>
+</div>
+{% endblock cta%}
+
+{%block content %}
+
+<section id="services">
+  <div class="bg-dark text-center py-5 mb-4">
+      <div class="container">
+        <h1 class="fw-light text-white">Teikiamos paslaugos</h1>
+      </div>
+    </div>
+  <div class="container">
+    <div class="row">
+      
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-0 shadow">
+          <img src="{% static '/img/chip.jpg' %}" class="card-img-top" alt="..." height = "220">
+          <div class="card-body text-center">
+            <h5 class="card-title"> Variklio galios didinimas </h5>
+          </div>
+        </div>
+      </div>
+     
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-0 shadow">
+          <img src="{% static '/img/dia.png' %}" class="card-img-top" alt="..." height = "220">
+          <div class="card-body text-center">
+            <h5 class="card-title">Profesionali variklio diagnostika</h5>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-xl-3 col-md-6 mb-4" >
+        <div class="card border-0 shadow">
+          <img src="{% static '/img/sklds.png' %}" class="card-img-top" alt="..." height = "220">
+          <div class="card-body text-center">
+            <h5 class="card-title">BMW oro sklendžių programinis išjungimas</h5>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-0 shadow">
+          <img src="{% static '/img/DPF.PNG' %}" class="card-img-top" alt="..." height = "220">
+          <div class="card-body text-center">
+            <h5 class="card-title">DPF filtrų programinis išjungimas</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </div>
+</section>
+
+
+<section id="contact" class="card m-4 p-4">
+    <div class="container">
+        <div class="row text-center">
+          
+            <div class="col-sm-6">
+            <div class="contact-detail-box">
+              <i class="far fa-envelope text-colored fa-3x"></i>
+              <h4>Susiekite</h4>
+              <abbr title="Phone">P:</abbr> (123) 456-7890<br>
+              E: <a href="mailto:email@email.com" class="text-muted">email@email.com</a>
+            </div>
+          </div>
+  
+          <div class="col-sm-6">
+            <div class="contact-detail-box">
+              <i class="fa fa-map-marker fa-3x text-colored"></i>
+              <h4>Mūs rasite čia</h4>
+  
+              <address>
+              J. Svažo gatvė<br>
+              Vilnius<br>
+            </address>
+            </div>
+          </div>
+  
+  
+  
+        </div>
+        
+  
+        
+        <div class="row">
+          <div class="col-sm-6">
+            <div class="contact-map">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2309.11067365608!2d25.106344751811665!3d54.637269280173!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x46dded2e1def47d1%3A0xec7327543386aa9d!2sJ.%20%C5%A0va%C5%BEo%20g.%2C%20Vilnius%2C%20Vilniaus%20m.%20sav.!5e0!3m2!1sen!2slt!4v1670240447767!5m2!1sen!2slt" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" style="width: 100%; height: 360px;"></iframe>
+            </div>
+          </div>
+  
+          <!-- Contact form -->
+          <div class="col-sm-6">
+            <form role="form" name="ajax-form" id="ajax-form" method="post" class="form-main"action="{% url 'home' %}">
+              {% csrf_token %}
+              <div class="form-group">
+                <label for="name2">Vardas</label>
+                <input class="form-control" id="name2" name="name" type="text" placeholder="Vardas">
+                <div class="error" id="err-name" style="display: none;">Prašome įveskite vardą</div>
+              </div> 
+  
+              <div class="form-group">
+                <label for="email2">El. Paštas</label>
+                <input class="form-control" id="email2" name="email" type="text" placeholder="El. Paštas">
+                <div class="error" id="err-emailvld" style="display: none;">El. Pašto formatas netinkamas</div> 
+              </div> 
+  
+              <div class="form-group">
+                <label for="message2">Žinutė</label>
+                <textarea class="form-control" id="message2" name="message" rows="5" placeholder="Žinutė"></textarea>
+  
+                <div class="error" id="err-message" style="display: none;">Įveskite savo žinutę</div>
+              </div> 
+  
+              <div class="row">            
+                  <button type="submit" class="btn btn-primary btn-shadow btn-rounded w-md" id="send">Susisiekti</button>
+                </div> 
+              </div> 
+  
+            </form> 
+          </div> 
+  
+        </div> 
+            
+      </div>
+</section>
+
+{%endblock content%}

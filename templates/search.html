@@ -1,0 +1,122 @@
+{% extends 'base.html' %} 
+
+{%block style%}
+    .card {
+    padding: 30px 40px;
+    margin-top: 60px;
+    margin-bottom: 60px;
+        border: none !important;
+        box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.2)
+    }
+
+    .blue-text {
+        color: #00BCD4
+    }
+
+    .form-control-label {
+        margin-bottom: 0
+    }
+
+    input,
+    textarea,
+    button {
+        padding: 8px 15px;
+        border-radius: 5px !important;
+        margin: 5px 0px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        font-size: 18px !important;
+        font-weight: 300
+    }
+
+    input:focus,
+    textarea:focus {
+        -moz-box-shadow: none !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+        border: 1px solid #00BCD4;
+        outline-width: 0;
+        font-weight: 400
+    }
+
+    .btn-block {
+        text-transform: uppercase;
+        font-size: 15px !important;
+        font-weight: 400;
+        height: 43px;
+        cursor: pointer
+    }
+
+    .btn-block:hover {
+        color: #fff !important
+    }
+
+    button:focus {
+        -moz-box-shadow: none !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+        outline-width: 0
+    }
+
+{%endblock style%}
+
+{% block content %}
+
+    {% if messages%}
+    <div class="card notification-card notification-invitation">
+        <div class="card-body">
+            {%for message in messages%}
+                <div class="card-title">{{message}} </div>
+                {% endfor %}
+        </div>
+    </div>
+    {%endif%}
+    <div class="container-fluid px-1 py-5 mx-auto">
+        <div class="row d-flex justify-content-center">
+            <div class="col-xl-7 col-lg-8 col-md-9 col-11 text-center">
+                <h3>
+                    Tikrinti automobilio galimybes
+                </h3>
+                <form method='post'> {% csrf_token %}
+                    {{form.as_p}}
+                    <button type="submit"> Ieškoti </button>
+                </form>
+                <table class="table table-bordered table-responsive" id="table_id">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Automobilio markė</th>
+                            <th>Automobilio modelis</th>
+                            <th>Variklio tūris</th>
+                            <th>Metai</th>
+                            <th>Galia prieš</th>
+                            <th>Galia po</th>
+                            <th>Sukimo momentas prieš</th>
+                            <th>Sukimo momentas po</th>
+                            <th>Kaina</th>
+                            <th>Sutaupoma kuro</th>
+                        </tr>
+                    </thead>
+                    {% for k in QuerySet %}
+                    <tbody>
+                        <tr>
+                            <td>{{ k.Marke }}</td>
+                            <td>{{ k.Model }}</td>
+                            <td>{{ k.Engine }}</td>
+                            <td>{{ k.Year }}</td>
+                            <td>{{ k.kw }}</td>
+                            <td>{{ k.kWA }}</td>
+                            <td>{{ k.nM }}</td>
+                            <td>{{ k.nMA }}</td>
+                            <td>{{ k.Price }}</td>
+                            <td>{{ k.Fuel }}</td>
+                        </tr>
+                    </tbody>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+</html>
